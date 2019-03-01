@@ -1,0 +1,73 @@
+---
+title: "Code Portfolio"
+author: "Devi States"
+date: "February 28, 2019"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Week 2-Lecture and Practice
+
+```{r}
+c(1,3,5,7,8,9)
+```
+```{r}
+c(42, "statistics", TRUE)
+
+x <-c(1,2,5,7,8,9)
+x[3]
+
+x[1:3]
+
+x[-2]
+
+x[c(1,3)]
+
+matrix(1:9, nrow=3, ncol=3)
+
+#What elements are extracted?
+x <- c(1,2,5,7,8,9) 
+x[3]
+x[1:3]    
+x[-2]    
+x[c(1,3)]
+
+mtcars
+head(mtcars)
+```
+
+### Week 2 Quiz code
+Question 5: Creating a vector x and extracted element from it. 
+
+```{r}
+
+x <- c(15,20,50,70,80,95)
+x[c(2,6)]
+```
+
+### Week 6 Quiz code:
+Question 1:Computing mean using nycflights13 data. 
+
+```{r}
+#Week 6 Quiz code:
+#Question 1:
+library(nycflights13)
+data("flights")
+head(flights)
+mean(flights$dep_delay,na.rm = TRUE)
+
+#Import income.csv data
+#Question 2, 4, 6
+library(readr)
+income<-read_csv("C:/Users/13148/Desktop/Aplied Data Science/Week6/income.csv")
+mean(income$M_weekly,na.rm = TRUE)
+mean(income$M_weekly,na.rm = TRUE, trim = 0.1)
+median(income$M_weekly,na.rm = TRUE)
+mad(income$F_workers,na.rm = TRUE)
+sd(income$F_workers,na.rm = TRUE)
+IQR(income$F_workers,na.rm = TRUE)
+```
+Text1
+Text2
+
