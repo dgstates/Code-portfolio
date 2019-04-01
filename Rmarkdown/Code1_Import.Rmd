@@ -70,4 +70,9 @@ IQR(income$F_workers,na.rm = TRUE)
 ```
 Text1
 Text2
+```{r}
+test<-c(rep(10,10))
+test
+```
+
 
