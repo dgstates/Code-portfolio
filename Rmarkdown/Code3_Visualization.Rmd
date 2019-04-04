@@ -8,9 +8,20 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-Data Visualization
+
+## Load Cars
+
+```{r}
+cars
+```
+##Plot
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+```
+
 ```{r}
 
 ```
-
 
