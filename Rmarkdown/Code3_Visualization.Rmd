@@ -9,19 +9,23 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Load Cars
-
-```{r}
-cars
-```
 ##Plot
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
-```
+
+## load mtcars
 
 ```{r}
+data(mtcars)
+```
 
+##loading ggplot2
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(x=hp, y=mpg)) +
+  geom_point(aes(size=cyl))
+  
 ```
 

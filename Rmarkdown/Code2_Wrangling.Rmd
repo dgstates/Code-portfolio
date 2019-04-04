@@ -9,9 +9,25 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Data Wrangling
+#load dplyr
 
 ```{r}
+library(dplyr)
+```
 
+## load mtcars
+
+```{r}
+data(mtcars)
+```
+
+```{r}
+mtcars %>% select(mpg, cyl, hp) %>%
+  group_by(cyl) %>%
+  summarise(count=n(), mean_mpg = mean(mpg))
+```
+
+```{r}
+mtcars %>% select(mpg, cyl, hp) %>% tidyr::gather(1:3)
 ```
 
