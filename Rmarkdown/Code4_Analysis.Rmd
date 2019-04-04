@@ -47,4 +47,9 @@ x<-c(15,20,70,80,95)
 x[c(2,6)]
 ```
 
+##Week4 Practice
+```{r}
+x<-c("apple", "banana", "pear")
+x
+```
 
