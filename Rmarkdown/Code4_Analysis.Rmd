@@ -12,44 +12,18 @@ knitr::opts_chunk$set(echo = TRUE)
 ## load cars
 
 ```{r cars}
-cars
+data("cars")
 
 ```
 
-## Plots
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-#Week two practice: 
-
+## Summary satistics
++ load income from code 1
 ```{r}
-c(1,3,5,7,8,9)
-
-c(42, "statistics", TRUE)
-
-x <-c(1,2,5,7,8,9)
-x[3]
-
-x[1:3]
-
-x[-2]
-
-x[c(1,3)]
-
-matrix(1:9, nrow=3, ncol=3)
-```
-
-## Week2 Quiz_5
-
-```{r}
-x<-c(15,20,70,80,95)
-x[c(2,6)]
-```
-
-##Week4 Practice
-```{r}
-x<-c("apple", "banana", "pear")
-x
+mean(cars$speed,na.rm = TRUE)
+mean(cars$speed,na.rm = TRUE, trim = 0.1)
+median(cars$speed,na.rm = TRUE)
+mad(cars$speed,na.rm = TRUE)
+sd(cars$speed,na.rm = TRUE)
+IQR(cars$speed,na.rm = TRUE)
 ```
 
