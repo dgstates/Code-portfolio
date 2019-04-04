@@ -16,9 +16,35 @@ cars
 
 ```
 
-## Including Plots
+## Plots
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
+#Week two practice: 
+
+```{r}
+c(1,3,5,7,8,9)
+
+c(42, "statistics", TRUE)
+
+x <-c(1,2,5,7,8,9)
+x[3]
+
+x[1:3]
+
+x[-2]
+
+x[c(1,3)]
+
+matrix(1:9, nrow=3, ncol=3)
+```
+
+## Week2 Quiz_5
+
+```{r}
+x<-c(15,20,70,80,95)
+x[c(2,6)]
+```
+
 
