@@ -1,105 +1,30 @@
 ---
-title: "K-means-practice"
+title: "Code4_Analaysis"
+author: "Devi States"
+date: "April 4, 2019"
 output: html_document
 ---
 
-```{r message=FALSE, warning=FALSE}
-library(tidyverse)  # data manipulation
-library(cluster)    # clustering algorithms
-library(factoextra) # clustering algorithms & visualization
-```
-## Distance
-
-```{r}
-vector1 <- c(5,2,1,4)
-vector2 <- c(5,5,4,2)
-matrix12 <- matrix(c(vector1,vector2), byrow=T,nrow=2)
-dist(matrix12, method="manhattan")
-dist(matrix12, method="euclidean")
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+## R Markdown
 
-```
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-## Data Preparation
-Adapted from UC Business Analytics R Programing Guide
-Dataset - 1973
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r USAarests}
-df <- USArrests
-```
-
-Remove missing values
-```{r}
-df <- na.omit(df)
-```
-Scaling
-```{r}
-df <- scale(df)
-
-```
-
-## K-Means
-```{r}
-k2 <- kmeans(df, centers = 2)  # centers  = K
-str(k2)
-```
-Output 
-- cluster: A vector of integers (from 1:k) indicating the cluster to which each point is allocated.
-- centers: A matrix of cluster centers.
-- totss: The total sum of squares.
-- withinss: Vector of within-cluster sum of squares, one component per cluster.
-- tot.withinss: Total within-cluster sum of squares, i.e. sum(withinss).
-- betweenss: The between-cluster sum of squares, i.e. $totss-tot.withinss$.
-- size: The number of points in each cluster.
-```{r}
-data("mtcars")
-mtcars
-mtcarsrescale<-scale(mtcars)
-mtcarsrescale
-```
-```{r}
-kmeanstest<-kmeans(mtcarsrescale,centers=4,nstart = 10)
-kmeanstest
-kmeanstest$tot.withinss
-```
-
-### Elbow Method
-```{r}
-# function to compute total within-cluster sum of square 
-wss <- function(k) {
-  kmeans(mtcarsrescale, k, nstart = 10 )$tot.withinss
-}
-
-# Compute and plot wss for k = 1 to k = 15
-k.values <- 1:15
-
-# extract wss for 2-15 clusters
-wss_values <- map_dbl(k.values, wss)
-
-plot(k.values, wss_values,
-       type="b", pch = 19, frame = FALSE, 
-       xlab="Number of clusters K",
-       ylab="Total within-clusters sum of squares")
-```
-### Cluster Visualization
-```{r}
-final <- kmeans(df, 4, nstart = 25)
-fviz_cluster(final, data = df)
-```
-
-```{r}
-data(cars)
+```{r cars}
 summary(cars)
-carsmodel<-lm(dist~speed,data = cars)
-summary(carsmodel)
 ```
 
-```{r}
-plot(carsmodel)
-```
-```{r}
-shapiro.test(carsmodel$residuals)
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
 ```
 
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
