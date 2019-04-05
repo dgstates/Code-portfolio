@@ -29,3 +29,39 @@ ggplot(mtcars, aes(x=hp, y=mpg)) +
   
 ```
 
+## Plot Gas vs. Temp
+```{r}
+plot(whiteside$Temp, whiteside$Gas, 
+     xlab = "Outside temperature", 
+     ylab = "Heating gas consumption")
+```
+
+# Load MASS package
+```{r}
+library(MASS)
+```
+
+# Plot whiteside data
+```{r}
+plot(whiteside)
+```
+# Apply the plot() function to Insul
+```{r}
+plot(whiteside$Insul)
+```
+
+## Cars Basic Satistics
+```{r}
+summary(Cars93)
+```
+
+# Plot Max.Price vs. Price as red triangles
+
+```{r}
+plot(Cars93$Price, Cars93$Max.Price,
+  pch = 17,
+  col = 'red')
+```
+
+
+
