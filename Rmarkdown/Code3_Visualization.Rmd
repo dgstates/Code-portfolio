@@ -29,16 +29,19 @@ ggplot(mtcars, aes(x=hp, y=mpg)) +
   
 ```
 
+# Load MASS package
+
+```{r}
+library(MASS)
+data("whiteside")
+```
+
 ## Plot Gas vs. Temp
 ```{r}
+
 plot(whiteside$Temp, whiteside$Gas, 
      xlab = "Outside temperature", 
      ylab = "Heating gas consumption")
-```
-
-# Load MASS package
-```{r}
-library(MASS)
 ```
 
 # Plot whiteside data
