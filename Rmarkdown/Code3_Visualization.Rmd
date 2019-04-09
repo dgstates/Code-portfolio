@@ -9,12 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-##Plot
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
 ## load mtcars
 
 ```{r}
@@ -53,7 +47,8 @@ plot(whiteside)
 plot(whiteside$Insul)
 ```
 
-## Cars Basic Satistics
+# load Cars93 is in your workspace
+
 ```{r}
 summary(Cars93)
 ```
@@ -66,5 +61,126 @@ plot(Cars93$Price, Cars93$Max.Price,
   col = 'red')
 ```
 
+# Use matplot() to generate an array of two scatterplots
+
+```{r}
+matplot(
+  UScereal$calories, 
+  UScereal[,c('protein', 'fat')], 
+  xlab = "calories",
+  ylab = "")
+```
+
+# Use matplot() to generate an array of three scatterplots
+
+```{r}
+matplot(
+  UScereal$calories, 
+  UScereal[,c('protein', 'fat', 'fibre')], 
+  xlab = "calories",
+  ylab = "")
+```
+
+# Use matplot() to generate an array of four scatterplots
+
+```{r}
+matplot(
+  UScereal$calories, 
+  UScereal[,c('protein', 'fat', 'fibre', 'carbo')], 
+  xlab = "calories",
+  ylab = "")
+```
+
+# Plot y1 vs. x1 
+
+```{r}
+plot(anscombe$x1, anscombe$y1)
+```
+# Plot y2 vs. x2
+
+```{r}
+plot(anscombe$x2, anscombe$y2)
+```
+
+# Plot y3 vs. x3
+```{r}
+plot(anscombe$x3, anscombe$y3)
+```
+
+# Plot y4 vs. x4
+```{r}
+plot(anscombe$x4, anscombe$y4)  
+```
+
+# Plot the raw duration data
+
+```{r}
+plot(geyser$duration, main = "Raw data")
+
+```
+
+# Plot the normalized histogram of the duration data
+
+```{r}
+truehist(geyser$duration, main = "Histogram")
+```
+
+# Plot the density of the duration data
+
+```{r}
+plot(density(geyser$duration), main = "Density")
+```
+
+# Plot scatterplot
+
+```{r}
+plot(Boston$rad, Boston$zn)
+```
+
+# Plot sunflower plot
+```{r}
+sunflowerplot(Boston$rad, Boston$zn)
+```
+# Call symbols() to create the default bubbleplot
+
+```{r}
+symbols(Cars93$Horsepower, Cars93$MPG.city,
+        circles = sqrt(Cars93$Price))
+```
+
+# Repeat, with the inches argument specified
+
+```{r}
+symbols(Cars93$Horsepower, Cars93$MPG.city,
+        circles = sqrt(Cars93$Price),
+        inches = 0.1)
+
+```
+# Create a table of Cylinders by Origin
+# Create the default stacked barplot
+```{r}
+tbl <- table(Cars93$Cylinders, Cars93$Origin)
+barplot(tbl)
+
+```
+# Load the insuranceData package
+
+```{r}
+library(insuranceData)
+```
+
+# Use the data() function to load the dataCar data frame
+```{r}
+data(dataCar)
+head(dataCar)
+```
+
+# Load the lattice package
+# Use xyplot() to draw the conditional scatterplot
+
+```{r}
+library(lattice)
+xyplot(calories ~ sugars | shelf, data = UScereal)
+```
 
 
