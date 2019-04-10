@@ -18,3 +18,29 @@ income<-read_csv("../Data/income.csv")
 
 ```
 
+#import chicago data
+
+```{r}
+library(readr)
+chicago
+summary(chicago)
+```
+
+#Load Iris.csv data
+
+```{r}
+library(readr)
+iris
+summary(iris)
+
+```
+
+# Load USEPA.csv data
+
+```{r}
+library(readr)
+USEPAdata
+summary(USEPAdata)
+
+```
+
