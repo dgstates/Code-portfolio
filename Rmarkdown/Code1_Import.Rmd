@@ -21,26 +21,24 @@ income<-read_csv("../Data/income.csv")
 #import chicago data
 
 ```{r}
-library(readr)
-chicago
+chicago<-read.csv("../data/chicago.csv",header = TRUE)
 summary(chicago)
 ```
 
 #Load Iris.csv data
 
 ```{r}
-library(readr)
-iris
+iris<-read.csv("../data/iris.csv", sep = ",", header = FALSE)
 summary(iris)
 
 ```
 
-# Load USEPA.csv data
 
+# Load EPA data by going up one level in the directory to the data folder
 ```{r}
-library(readr)
-USEPAdata
-summary(USEPAdata)
+USEPAdata<-read.csv("../data/USEPAdata.csv")
+sum(is.na(USEPAdata))
 
+sum(sapply(USEPAdata,function(x)sum(is.na(x)))>0)
 ```
 
