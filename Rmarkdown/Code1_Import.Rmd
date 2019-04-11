@@ -32,9 +32,8 @@ iris<-read.csv("../data/iris.csv", sep = ",", header = FALSE)
 summary(iris)
 
 ```
+#Load EPA data by going up one level in the directory to the data folder
 
-
-# Load EPA data by going up one level in the directory to the data folder
 ```{r}
 USEPAdata<-read.csv("../data/USEPAdata.csv")
 sum(is.na(USEPAdata))

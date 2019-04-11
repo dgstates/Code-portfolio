@@ -216,6 +216,62 @@ income&lt;-read_csv(&quot;../Data/income.csv&quot;)</code></pre>
 ##   F_weekly = col_double()
 ## )</code></pre>
 </div>
+<div id="import-chicago-data" class="section level1">
+<h1>import chicago data</h1>
+<pre class="r"><code>chicago&lt;-read.csv(&quot;../data/chicago.csv&quot;,header = TRUE)
+summary(chicago)</code></pre>
+<pre><code>##    city           tmpd           dewpoint              date     
+##  chic:6940   Min.   :-16.00   Min.   :-25.62   1987-01-01:   1  
+##              1st Qu.: 35.00   1st Qu.: 27.00   1987-01-02:   1  
+##              Median : 51.00   Median : 39.88   1987-01-03:   1  
+##              Mean   : 50.31   Mean   : 40.34   1987-01-04:   1  
+##              3rd Qu.: 67.00   3rd Qu.: 55.75   1987-01-05:   1  
+##              Max.   : 92.00   Max.   : 78.25   1987-01-06:   1  
+##              NA's   :1        NA's   :2        (Other)   :6934  
+##       pm25         pm10tmean2        o3tmean2         no2tmean2     
+##  Min.   : 1.70   Min.   :  2.00   Min.   : 0.1528   Min.   : 6.158  
+##  1st Qu.: 9.70   1st Qu.: 21.50   1st Qu.:10.0729   1st Qu.:19.654  
+##  Median :14.66   Median : 30.28   Median :18.5218   Median :24.556  
+##  Mean   :16.23   Mean   : 33.90   Mean   :19.4355   Mean   :25.232  
+##  3rd Qu.:20.60   3rd Qu.: 42.00   3rd Qu.:27.0010   3rd Qu.:30.139  
+##  Max.   :61.50   Max.   :365.00   Max.   :66.5875   Max.   :62.480  
+##  NA's   :4447    NA's   :242                                        
+##   pm25detrend      tempcat          year     
+##  Min.   :-14.531   cold:6737   Min.   :1987  
+##  1st Qu.: -6.531   hot : 202   1st Qu.:1991  
+##  Median : -1.574   NA's:   1   Median :1996  
+##  Mean   :  0.000               Mean   :1996  
+##  3rd Qu.:  4.369               3rd Qu.:2001  
+##  Max.   : 45.269               Max.   :2005  
+##  NA's   :4447</code></pre>
+</div>
+<div id="load-iris.csv-data" class="section level1">
+<h1>Load Iris.csv data</h1>
+<pre class="r"><code>iris&lt;-read.csv(&quot;../data/iris.csv&quot;, sep = &quot;,&quot;, header = FALSE)
+summary(iris)</code></pre>
+<pre><code>##        V1              V2              V3              V4       
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.054   Mean   :3.759   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##                V5    
+##  Iris-setosa    :50  
+##  Iris-versicolor:50  
+##  Iris-virginica :50  
+##                      
+##                      
+## </code></pre>
+</div>
+<div id="load-epa-data-by-going-up-one-level-in-the-directory-to-the-data-folder" class="section level1">
+<h1>Load EPA data by going up one level in the directory to the data folder</h1>
+<pre class="r"><code>USEPAdata&lt;-read.csv(&quot;../data/USEPAdata.csv&quot;)
+sum(is.na(USEPAdata))</code></pre>
+<pre><code>## [1] 244538</code></pre>
+<pre class="r"><code>sum(sapply(USEPAdata,function(x)sum(is.na(x)))&gt;0)</code></pre>
+<pre><code>## [1] 7</code></pre>
+</div>
 
 
 
