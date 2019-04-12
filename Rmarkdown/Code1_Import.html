@@ -272,6 +272,32 @@ sum(is.na(USEPAdata))</code></pre>
 <pre class="r"><code>sum(sapply(USEPAdata,function(x)sum(is.na(x)))&gt;0)</code></pre>
 <pre><code>## [1] 7</code></pre>
 </div>
+<div id="example-of-loading-data-from-excel-file" class="section level1">
+<h1>Example of loading data from excel file</h1>
+<div id="skiping-two-rows-setting-column-typesskipping-a-column-mostly-nas-using-code-chunk-option-to-turn-off-the-warning-for-income-having-none-numerica-values" class="section level3">
+<h3>skiping two rows, setting column types(skipping a column mostly NA’s ), using code chunk option to turn off the warning for income having none numerica values</h3>
+<pre class="r"><code>library(readxl)
+gapminder_xlsx &lt;- read_excel(&quot;../Data/gapminder.xlsx&quot;, skip = 2, 
+                             col_types = c(&quot;text&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;skip&quot;, &quot;numeric&quot;, &quot;text&quot;) )
+summary(gapminder_xlsx)</code></pre>
+<pre><code>##    Country               Year           life           income      
+##  Length:41284       Min.   :1800   Min.   : 1.00   Min.   :   142  
+##  Class :character   1st Qu.:1854   1st Qu.:31.00   1st Qu.:   883  
+##  Mode  :character   Median :1908   Median :35.12   Median :  1450  
+##                     Mean   :1907   Mean   :42.88   Mean   :  4571  
+##                     3rd Qu.:1962   3rd Qu.:55.60   3rd Qu.:  3483  
+##                     Max.   :2015   Max.   :84.10   Max.   :182668  
+##                                                    NA's   :2341    
+##     region         
+##  Length:41284      
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+## </code></pre>
+</div>
+</div>
 
 
 

@@ -40,4 +40,13 @@ sum(is.na(USEPAdata))
 
 sum(sapply(USEPAdata,function(x)sum(is.na(x)))>0)
 ```
+#Example of loading data from excel file
+###skiping two rows, setting column types(skipping a column mostly NA's ), using code chunk option to turn off the warning for income having none numerica values 
+```{r warning =FALSE}
+library(readxl)
+gapminder_xlsx <- read_excel("../Data/gapminder.xlsx", skip = 2, 
+                             col_types = c("text", "numeric", "numeric", "skip", "numeric", "text") )
+summary(gapminder_xlsx)
+
+```
 
