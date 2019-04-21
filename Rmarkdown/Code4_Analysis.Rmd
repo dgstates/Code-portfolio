@@ -27,3 +27,70 @@ sd(cars$speed,na.rm = TRUE)
 IQR(cars$speed,na.rm = TRUE)
 ```
 
+#Load the dplyr package
+
+```{r}
+library("dplyr")
+
+```
+
+# Load the hflights package
+
+```{r}
+library("hflights")
+
+```
+
+# Call both head() and summary() on hflights
+
+```{r}
+head(hflights)
+summary(hflights)
+```
+
+# Print out the columns Origin up to Cancelled of hflights
+```{r}
+select(hflights, 14:19)
+```
+# Print out a tbl containing just ArrDelay and DepDelay
+
+```{r}
+select(hflights, 12, 13)
+```
+# All flights that traveled 3000 miles or more
+
+```{r}
+filter(hflights, Distance >= 3000)
+```
+# Arrange according to carrier and decreasing departure delays
+
+```{r}
+arrange(hflights, UniqueCarrier, desc(DepDelay))
+
+```
+#import chicago data
+
+```{r}
+chicago<-read.csv("../data/chicago.csv",header = TRUE)
+
+```
+# Summary satistics of chicago
+
+```{r}
+summary(chicago)
+```
+#Summary statistics by stratum
+
+```{r}
+chicago <- mutate(chicago, tempcat = factor(1 * (tmpd > 80), labels = c("cold", "hot")))
+hotcold <- group_by(chicago, tempcat)
+hotcold
+```
+```{r}
+
+```
+
+
+
+
+
