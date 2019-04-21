@@ -86,9 +86,6 @@ chicago <- mutate(chicago, tempcat = factor(1 * (tmpd > 80), labels = c("cold", 
 hotcold <- group_by(chicago, tempcat)
 hotcold
 ```
-```{r}
-
-```
 
 
 
