@@ -105,5 +105,18 @@ mean(income$M_weekly,na.rm = TRUE, trim = 0.1)
 median(income$M_weekly,na.rm = TRUE)  
 ```
 
+#t-test and box plot
+
+```{r}
+library(dplyr)
+workerdata <- income %>% select(M_workers,F_workers) %>% na.omit() 
+```
+
+```{r}
+t.test(workerdata$M_workers,workerdata$F_workers)
+```
+```{r}
+plot(M_workers~F_workers,data = workerdata)
+```
 
 
