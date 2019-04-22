@@ -52,7 +52,7 @@ summary(hflights)
 ```{r}
 select(hflights, 14:19)
 ```
-# Print out a tbl containing just ArrDelay and DepDelay
+# Print out a table containing just ArrDelay and DepDelay
 
 ```{r}
 select(hflights, 12, 13)
@@ -68,6 +68,7 @@ filter(hflights, Distance >= 3000)
 arrange(hflights, UniqueCarrier, desc(DepDelay))
 
 ```
+
 #import chicago data
 
 ```{r}
@@ -87,7 +88,22 @@ hotcold <- group_by(chicago, tempcat)
 hotcold
 ```
 
+#Load library reader
+#Import income data
+```{r}
+library(readr)
 
+'C:/Users/13148/Desktop/Aplied Data Science/Week6/income.csv'
+income<-read_csv("C:/Users/13148/Desktop/Aplied Data Science/Week6/income.csv")
+```
+#Calculate mean, trimmed mean (10%), and median for Male workers salary (M_weekly). 
+#Make sure to set null value parameter to TRUE (see ?mean).
+#Select the statement that best describes your results.
+```{r}
+mean(income$M_weekly,na.rm = TRUE)
+mean(income$M_weekly,na.rm = TRUE, trim = 0.1)
+median(income$M_weekly,na.rm = TRUE)  
+```
 
 
 
