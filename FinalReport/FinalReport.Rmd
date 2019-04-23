@@ -25,4 +25,7 @@ library(tidyverse)
 ```{r}
 summary(gapminder)
 ```
+```{r}
+testInheritedMethods()
+```
 
