@@ -1,0 +1,28 @@
+---
+title: "FinalReport"
+author: "Devi States"
+date: "April 2, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Load data to examine
+```{r}
+# load gapminder dataset
+library(gapminder)
+dim(gapminder)
+head(gapminder)
+```
+
+#load tifyverse
+```{r}
+library(tidyverse)
+
+```
+#Data summary
+```{r}
+summary(gapminder)
+```
+
