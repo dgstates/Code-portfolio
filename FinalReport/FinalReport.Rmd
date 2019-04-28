@@ -8,28 +8,74 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-# Load data to examine
+## Data Description:
+### Epicycle of Analysis
+#### Stating and refining the question
+      1. How does income relate to life expectancy?
+      2. Which countries have lower life expectancy
+      3. Which countries have higher life expectancy
+
 ```{r}
-# load gapminder dataset
-library(gapminder)
-dim(gapminder)
-head(gapminder)
+
 ```
 
-#load tifyverse
+#	Exploring the data
+# data from gapminder.org
+# used to perform data transformation and manipulation
+# used for data visualization
+#load tidyverse
+
 ```{r}
-library(tidyverse)
+library(gapminder)
+library(dplyr) 
+library(ggplot2)
+#library(tidyverse)
 
 ```
 #Data summary
 ```{r}
+data("gapminder")
+gapminder <- as.data.frame(gapminder)
 summary(gapminder)
+class(gapminder)
 ```
+# scater plot
+
 ```{r}
-testInheritedMethods()
+  plot(life~income,data = gapminder)
+
 ```
+
+# Box plot of Country by region for life expectancy
+
+```{r fig.width=6, fig.height=9}
+ggplot(gapminder,aes(x = Country, y = life)) +
+  geom_boxplot(na.rm = TRUE) +
+  facet_wrap(~region,ncol = 1,scales = "free_x")
+class(gapminder)
+```
+
+#	Building formal statistical models
+##Model 1
+
+```{r}
+Model1 <- lm(life~Year+region,data = gapminder) 
+summary(Model1)
+```
+#Interpreting the results
+Model1 demonstrates There is a signinficant positive relationship bwtween year and life expactancy. In addition, life expactancy differ different regions. 
 
 ```{r}
 
 ```
+
+#Communicating the results
+```{r}
+
+```
+
+
+
+
+
 

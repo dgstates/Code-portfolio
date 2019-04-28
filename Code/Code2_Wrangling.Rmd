@@ -1,0 +1,72 @@
+---
+title: "Code2_Wrangling"
+author: "Devi States"
+date: "March 1, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#load dplyr
+
+```{r}
+library(dplyr)
+```
+
+## load mtcars
+
+```{r}
+data(mtcars)
+```
+
+## Agregating data
+
+```{r}
+mtcars %>% dplyr::select(mpg, cyl, hp) %>%
+  group_by(cyl) %>%
+  summarise(count=n(), mean_mpg = mean(mpg))
+```
+
+## Rearrange data, so that column become rows
+
+```{r}
+longdata <-mtcars %>% dplyr::select(mpg, cyl, hp, wt) %>% tidyr::gather(variable,value,3:4)
+longdata
+```
+
+## Creating New Field that Creates Category for Distance
+```{r}
+hflights <-hflights::hflights
+summary(hflights$Distance)
+
+```
+```{r}
+hflights$Distancecat<-cut(hflights$Distance,breaks = c(79,200,1000,4000))
+table(hflights$Distancecat)
+```
+
+##Load gapminder
+
+```{r}
+library(readr)
+gapdata<-read_csv("../Data/gapminder.csv")
+summary(gapdata)
+```
+
+##Creating data from long to wide
+
+```{r}
+gapdatawide<-gapdata %>% dplyr::select(Country,Year,life) %>% tidyr::spread(key = Year, value = life)
+head(gapdatawide)
+```
+```{r}
+summary(hflights)
+```
+```{r}
+hflights$speed <- (hflights$Distance/hflights$AirTime)*60
+summary(hflights$speed)
+hist(hflights$speed)
+```
+

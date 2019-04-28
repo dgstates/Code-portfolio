@@ -1,0 +1,52 @@
+---
+title: "Code1_Import"
+author: "Devi States"
+date: "February 28, 2019"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#Import income.csv data
++ going up one level to access data in data folder
+
+```{r}
+library(readr)
+income<-read_csv("../Data/income.csv")
+
+```
+
+#import chicago data
+
+```{r}
+chicago<-read.csv("../data/chicago.csv",header = TRUE)
+summary(chicago)
+```
+
+#Load Iris.csv data
+
+```{r}
+iris<-read.csv("../data/iris.csv", sep = ",", header = FALSE)
+summary(iris)
+
+```
+#Load EPA data by going up one level in the directory to the data folder
+
+```{r}
+USEPAdata<-read.csv("../data/USEPAdata.csv")
+sum(is.na(USEPAdata))
+
+sum(sapply(USEPAdata,function(x)sum(is.na(x)))>0)
+```
+#Example of loading data from excel file
+###skiping two rows, setting column types(skipping a column mostly NA's ), using code chunk option to turn off the warning for income having none numerica values 
+```{r warning =FALSE}
+library(readxl)
+gapminder_xlsx <- read_excel("../Data/gapminder.xlsx", skip = 2, 
+                             col_types = c("text", "numeric", "numeric", "skip", "numeric", "text") )
+summary(gapminder_xlsx)
+
+```
+

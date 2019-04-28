@@ -1,0 +1,122 @@
+---
+title: "Code4_Analaysis"
+author: "Devi States"
+date: "April 4, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## load cars
+
+```{r cars}
+data("cars")
+
+```
+
+## Summary satistics
++ load income from code 1
+```{r}
+mean(cars$speed,na.rm = TRUE)
+mean(cars$speed,na.rm = TRUE, trim = 0.1)
+median(cars$speed,na.rm = TRUE)
+mad(cars$speed,na.rm = TRUE)
+sd(cars$speed,na.rm = TRUE)
+IQR(cars$speed,na.rm = TRUE)
+```
+
+#Load the dplyr package
+
+```{r}
+library("dplyr")
+
+```
+
+# Load the hflights package
+
+```{r}
+library("hflights")
+
+```
+
+# Call both head() and summary() on hflights
+
+```{r}
+head(hflights)
+summary(hflights)
+```
+
+# Print out the columns Origin up to Cancelled of hflights
+```{r}
+select(hflights, 14:19)
+```
+# Print out a table containing just ArrDelay and DepDelay
+
+```{r}
+select(hflights, 12, 13)
+```
+# All flights that traveled 3000 miles or more
+
+```{r}
+filter(hflights, Distance >= 3000)
+```
+# Arrange according to carrier and decreasing departure delays
+
+```{r}
+arrange(hflights, UniqueCarrier, desc(DepDelay))
+
+```
+
+#import chicago data
+
+```{r}
+chicago<-read.csv("../data/chicago.csv",header = TRUE)
+
+```
+# Summary satistics of chicago
+
+```{r}
+summary(chicago)
+```
+#Summary statistics by stratum
+
+```{r}
+chicago <- mutate(chicago, tempcat = factor(1 * (tmpd > 80), labels = c("cold", "hot")))
+hotcold <- group_by(chicago, tempcat)
+hotcold
+```
+
+#Load library reader
+#Import income data
+```{r}
+library(readr)
+
+'C:/Users/13148/Desktop/Aplied Data Science/Week6/income.csv'
+income<-read_csv("C:/Users/13148/Desktop/Aplied Data Science/Week6/income.csv")
+```
+#Calculate mean, trimmed mean (10%), and median for Male workers salary (M_weekly). 
+#Make sure to set null value parameter to TRUE (see ?mean).
+#Select the statement that best describes your results.
+```{r}
+mean(income$M_weekly,na.rm = TRUE)
+mean(income$M_weekly,na.rm = TRUE, trim = 0.1)
+median(income$M_weekly,na.rm = TRUE)  
+```
+
+#t-test and box plot
+
+```{r}
+library(dplyr)
+workerdata <- income %>% select(M_workers,F_workers) %>% na.omit() 
+```
+
+```{r}
+t.test(workerdata$M_workers,workerdata$F_workers)
+```
+```{r}
+plot(M_workers~F_workers,data = workerdata)
+```
+
+
