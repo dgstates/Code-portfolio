@@ -37,7 +37,7 @@ gapdata<-read_csv("../Data/gapminder.csv")
 ## Discrption of data:
 
 ###Overall narrative summary of data:
-###how many observations 2pts
+###how many observations2pts
 ###how many variables 2pts
 ###type of variables 2pts
 ###how disperse is your data (e.g price), range of variables (e.g. years) 2pts
