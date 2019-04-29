@@ -1,81 +1,100 @@
 ---
-title: "Final_Project"
+title: "FinalReport"
 author: "Devi States"
-date: "April 2, 2019"
+date: "April 24, 2019"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## Data Description:
-### Epicycle of Analysis
-#### Stating and refining the question
-      1. How does income relate to life expectancy?
-      2. Which countries have lower life expectancy
-      3. Which countries have higher life expectancy
 
-```{r}
 
-```
+## Introduction
+Study shows there are many factora influence life expectancy such as socioeconomic status, income, education, access to healthcare, health behaviours, poor nutrition and lack of exercise etc. In this study,there are three following research questions to be answered by using gapminder data. 
 
-#	Exploring the data
-# data from gapminder.org
-# used to perform data transformation and manipulation
-# used for data visualization
-#load tidyverse
+###Research questions:
+1. How does income relate to life expectancy?
+2. Which countries have lower life expectancy
+3. Which countries have higher life expectancy
+4. What is income and life expactancy compared to other Asian countries?
+
+### Importing data and libraries:
 
 ```{r}
 library(gapminder)
-library(dplyr) 
+library(plyr)
+library(dplyr)
+library(tidyr)
+library(corrplot)
+library(lattice)
 library(ggplot2)
-#library(tidyverse)
+library(purrr)
+library(tidyverse)
 
 ```
-#Data summary
-```{r}
-data("gapminder")
-gapminder <- as.data.frame(gapminder)
-summary(gapminder)
-class(gapminder)
-```
-# scater plot
+## Importing data as gapminder.csv file:   
 
 ```{r}
-  plot(life~income,data = gapminder)
+library(readr)
+gapdata<-read_csv("../Data/gapminder.csv")
 
 ```
+## Discrption of data:
 
-# Box plot of Country by region for life expectancy
+###Overall narrative summary of data:
+###how many observations 2pts
+###how many variables 2pts
+###type of variables 2pts
+###how disperse is your data (e.g price), range of variables (e.g. years) 2pts
+###data wrangling 2pts
+###preprocessing steps (e.g. - normalization, log scale). If no preprocessing - explain why. Note: in gapminder population is calculated every ten years. Thus the same # population is applied to every year during the 10 year period. Consider wrangling your data before the analysis, do not treat these values as zero.
 
-```{r fig.width=6, fig.height=9}
-ggplot(gapminder,aes(x = Country, y = life)) +
-  geom_boxplot(na.rm = TRUE) +
-  facet_wrap(~region,ncol = 1,scales = "free_x")
-class(gapminder)
-```
 
-#	Building formal statistical models
-##Model 1
+##Explore data 60 pts - provide insights from data:
+###Exploratory plots 20 pts:
+####histogram, 
+####correlation plot, 
+####box plot (your choice of meaningful plots)
+
+###Cluster analysis 20 pts:
+####Specify explicitly the choice of # clusters using one of the learned methods (elbow, silhouette etc) 5 pts
+####Visualize cluster 10 pts
+####Summarize the observed pattern (if any) 5pts
+
+###Regression analysis 20 pts
+####Specify the formula - what is your dependent variable=outcome (DV) and what are your independent variables/features (IV) 2 pts
+####Provide the regression summary table 3 pts
+####Explain the summary table 5 pts
+####Visualize 4 diagnostic plots 5 pts
+####Explain how well your model fit the assumptions based on those diagnostic plots 5 pts
+####Note: Provide a full explanation/description for each figure. 
+####Subtracting 1pt for not providing explanation for a figure
+####Subtracting 1pt: for printing data tables. Do not include head functions, do not print a portion of dataframe - it is only needed for your exploration but not for report. Consider simply providing a descriptive information
+
+##Visualization 5 pts (overall)
+###Legends 1pt
+###Title 1pt
+###Axis titles 1pt
+###Axis values 1pt
+###Plots are readable (for example, avoid colors that are hard to distinguished, it is a good practice to know if your colors are appropriate for color blindness) 1pt
+
+##Report your findings 10 pts
+###Make sure to provide answers to questions you have generated at the beginning. Write a brief summary of your answers in your report. You are not expected to have a comprehensive research in this assignment.
+
+
+
+
 
 ```{r}
-Model1 <- lm(life~Year+region,data = gapminder) 
-summary(Model1)
+gapminder %>% as_tibble()
 ```
-#Interpreting the results
-Model1 demonstrates There is a signinficant positive relationship bwtween year and life expactancy. In addition, life expactancy differ different regions. 
+
 
 ```{r}
-
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
 ```
-
-#Communicating the results
-```{r}
-
-```
-
-
-
 
 
 
