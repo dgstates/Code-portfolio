@@ -13,12 +13,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Introduction
 Study shows there are many factora influence life expectancy such as socioeconomic status, income, education, access to healthcare, health behaviours, poor nutrition and lack of exercise etc. In this study,there are three following research questions to be answered by using gapminder data. 
 
-###Research questions:
-1. How does income relate to life expectancy?
-2. Which countries have lower life expectancy
-3. Which countries have higher life expectancy
-4. What is income and life expactancy compared to other Asian countries?
-
 ### Importing data and libraries:
 
 ```{r}
@@ -52,6 +46,13 @@ gapdata<-read_csv("../Data/gapminder.csv")
 
 
 ##Explore data 60 pts - provide insights from data:
+
+###Research questions:
+1. How does income relate to life expectancy?
+2. Which countries have lower life expectancy
+3. Which countries have higher life expectancy
+4. What is income and life expactancy compared to other Asian countries?
+
 ###Exploratory plots 20 pts:
 ####histogram, 
 ####correlation plot, 
@@ -79,22 +80,10 @@ gapdata<-read_csv("../Data/gapminder.csv")
 ###Axis values 1pt
 ###Plots are readable (for example, avoid colors that are hard to distinguished, it is a good practice to know if your colors are appropriate for color blindness) 1pt
 
-##Report your findings 10 pts
+##Results 10 pts
 ###Make sure to provide answers to questions you have generated at the beginning. Write a brief summary of your answers in your report. You are not expected to have a comprehensive research in this assignment.
 
 
-
-
-
-```{r}
-gapminder %>% as_tibble()
-```
-
-
-```{r}
-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
-  geom_point()
-```
 
 
 
