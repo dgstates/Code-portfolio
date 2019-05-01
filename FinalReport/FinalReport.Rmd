@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Introduction
-Study shows there are many factora influence life expectancy such as socioeconomic status, income, education, access to healthcare, health behaviours, poor nutrition and lack of exercise etc. In this study,there are three following research questions to be answered by using gapminder data. 
+Study shows there are many factora influence life expectancy such as socioeconomic status, income, education, access to healthcare, health behaviours, poor nutrition and lack of exercise etc. In this study,there are 7-8 following research questions to be answered by using gapminder data. 
 
 ### Importing data and libraries:
 
@@ -69,25 +69,25 @@ sum(is.na(gapminder))
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###Overall narrative summary of data:
-###how many observations2pts
-###how many variables 2pts
 ###type of variables 2pts
+
+```{r}
+lapply(gapminder, class)
+```
+
 ###how disperse is your data (e.g price), range of variables (e.g. years) 2pts
+
+```{r}
+length(levels(gapminder$country))
+```
+```{r}
+hist(gapminder$gdpPercap,breaks = 30)
+```
+```{r}
+range(gapminder$year)
+```
+
+
 ###data wrangling 2pts
 ###preprocessing steps (e.g. - normalization, log scale). If no preprocessing - explain why. Note: in gapminder population is calculated every ten years. Thus the same # population is applied to every year during the 10 year period. Consider wrangling your data before the analysis, do not treat these values as zero.
 
