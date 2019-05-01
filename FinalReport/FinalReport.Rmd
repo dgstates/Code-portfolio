@@ -43,6 +43,7 @@ gapdata<-read_csv("../Data/gapminder.csv")
 5. pop	 = total population
 6. gdpPercap = 	per-capita GDP
 
+
 ###The number of observations and variables are shown below:
 #### Number of observations
 ```{r}
@@ -81,6 +82,7 @@ sum(is.na(gapminder))
 
 
 
+
 ###Overall narrative summary of data:
 ###how many observations2pts
 ###how many variables 2pts
@@ -96,7 +98,10 @@ sum(is.na(gapminder))
 1. How does income relate to life expectancy?
 2. Which countries have lower life expectancy
 3. Which countries have higher life expectancy
-4. What is income and life expactancy compared to other Asian countries?
+4. What is income and life expactancy of Nepal compared to other Asian countries?
+5. What is distribution of GDP per capital in 2007?
+6. What are top 5 countries with largest GDP per capita in 2007?
+7. What is life expectation by continent?
 
 ###Exploratory plots 20 pts:
 ####histogram, 
