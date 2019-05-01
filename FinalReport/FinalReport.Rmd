@@ -35,6 +35,16 @@ gapdata<-read_csv("../Data/gapminder.csv")
 
 ```
 ## Discrption of data:
+### Number of observations
+```{r}
+nrow(gapminder_unfiltered)
+```
+#Number of variables
+
+```{r}
+ncol(gapminder_unfiltered)
+```
+
 
 ###Overall narrative summary of data:
 ###how many observations2pts
