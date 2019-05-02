@@ -80,7 +80,7 @@ length(levels(gapminder$country))
 
 ```
 
-####
+####Skewed to right 
 ```{r}
 hist(gapminder$gdpPercap,breaks = 30)
 
@@ -93,10 +93,17 @@ range(gapminder$year)
 
 ```
 
+####Most age range of 70.8 to 76.7 years old. 
+```{r}
+gapminder$lifeExpcat <- cut(gapminder$lifeExp,breaks = 10)
+table(gapminder$lifeExpcat)
+```
 
-
-
-
+####
+```{r}
+gapminder$gdpPercaplog <- log(gapminder$gdpPercap)
+hist(gapminder$gdpPercaplog,breaks = 30)
+```
 
 ###how disperse is your data (e.g price), range of variables (e.g. years) 2pts
 ###data wrangling 2pts
@@ -104,12 +111,25 @@ range(gapminder$year)
 
 
 ##Explore data 60 pts - provide insights from data:
-
 ###Research questions:
 1. How does income relate to life expectancy?
+
+```{r}
+plot(lifeExp~gdpPercaplog,data = gapminder, main = "Life Expectancy and GDP for 2007",
+xlab = "Log of GDP", ylab = "Years")
+lifegdpmodel <- lm(lifeExp~gdpPercaplog,data = gapminder)
+abline(lifegdpmodel, col = "red")
+legend(x = "bottomright", lty = 1, col = "red", legend = "regression line")
+```
+
+
+
+
+
+
 2. Which countries have lower life expectancy
 3. Which countries have higher life expectancy
-4. What is income and life expactancy compared to other Asian countries?
+4. What is income and life expactancy of Nepal compared to other Asian countries?
 
 ###Exploratory plots 20 pts:
 ####histogram, 
