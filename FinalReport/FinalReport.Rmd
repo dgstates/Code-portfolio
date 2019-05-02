@@ -35,16 +35,24 @@ gapdata<-read_csv("../Data/gapminder.csv")
 
 ```
 ## Discrption of data:
+###The gapminder data frames include 1704 observations and six variables:
+1. country	
+2. continent	
+3. year	
+4. lifeExp	life expectancy at birth
+5. pop	total population
+6. gdpPercap	per-capita GDP
+
 ###The number of observations and variables are shown below:
 #### Number of observations
 ```{r}
-nrow(gapminder_unfiltered)
+nrow(gapminder)
 ```
 
 ####Number of variables
 
 ```{r}
-ncol(gapminder_unfiltered)
+ncol(gapminder)
 ```
 
 ####Basic summary of statistics are shown below:
@@ -53,18 +61,36 @@ ncol(gapminder_unfiltered)
 summary(gapminder)
 ```
 
-# There are not missing values
+#### There are not missing values
 
 ```{r}
 sum(is.na(gapminder))
 
 ```
 
-
-####Top 10 countries with largest GDP per capita in 2007
+####type of variables 
 
 ```{r}
-top_n(arrange(gapminder2007, -gdpPercap), 10)
+lapply(gapminder, class)
+
+```
+####Number of countries:
+```{r}
+length(levels(gapminder$country))
+
+```
+
+####
+```{r}
+hist(gapminder$gdpPercap,breaks = 30)
+
+```
+
+####The gapminder data frame range from 1952 to 2007
+
+```{r}
+range(gapminder$year)
+
 ```
 
 
@@ -72,15 +98,6 @@ top_n(arrange(gapminder2007, -gdpPercap), 10)
 
 
 
-
-
-
-
-
-###Overall narrative summary of data:
-###how many observations2pts
-###how many variables 2pts
-###type of variables 2pts
 ###how disperse is your data (e.g price), range of variables (e.g. years) 2pts
 ###data wrangling 2pts
 ###preprocessing steps (e.g. - normalization, log scale). If no preprocessing - explain why. Note: in gapminder population is calculated every ten years. Thus the same # population is applied to every year during the 10 year period. Consider wrangling your data before the analysis, do not treat these values as zero.
