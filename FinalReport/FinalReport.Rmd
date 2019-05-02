@@ -35,27 +35,26 @@ gapdata<-read_csv("../Data/gapminder.csv")
 
 ```
 ## Discrption of data:
-###The gapminder data frames include 1704 observations and six variables:
+### The gapminder data frames include 1704 observations and six variables:
 1. country	
 2. continent	
 3. year	
 4. lifeExp	life expectancy at birth
 5. pop	total population
-6. gdpPercap	per-capita GDP
+6. gdpPercap	per-capita 
 
-###The number of observations and variables are shown below:
-#### Number of observations
+### Number of observations:
 ```{r}
 nrow(gapminder)
 ```
 
-####Number of variables
+### Number of variables
 
 ```{r}
 ncol(gapminder)
 ```
 
-####Basic summary of statistics are shown below:
+### Basic summary of statistics are shown below:
 
 ```{r}
 summary(gapminder)
@@ -68,32 +67,69 @@ sum(is.na(gapminder))
 
 ```
 
-####type of variables 
+### Type of variables 
 
 ```{r}
 lapply(gapminder, class)
 
 ```
-####Number of countries:
+###The total number of countries in the data set is shown below::
 ```{r}
 length(levels(gapminder$country))
 
 ```
 
-####Skewed to right 
+###GDP distribution for different continents in 2007
+
+```{r}
+GDPbyCont <- gapminder2007 %>% 
+  group_by(continent) %>% 
+  summarize(avgGDP = mean(gdpPercap))
+ggplot(GDPbyCont, 
+  aes(x = continent, y = avgGDP, color = continent)) +
+  geom_point(size=10) +
+  ggtitle("2007 GDP by Continent") +
+  xlab("Continent") + ylab("Avg. GDP per Capita") +
+  theme_classic()
+```
+
+###Top 5 countries with largest GDP per capita in 2007
+```{r}
+top_n(arrange(gapminder2007, -gdpPercap), 5)
+
+```
+
+###life expectation over year by continent
+```{r}
+ggplot(gapminder_unfiltered, 
+       aes(year, lifeExp, colour = continent)) + 
+  geom_smooth() + ggtitle("Life Expectation over Year by Continent") +
+  xlab("Year") + ylab("Life Expectancy") +
+  theme_classic()
+```
+
+
+
+
+
+
+
+
+
+###Skewed to right 
 ```{r}
 hist(gapminder$gdpPercap,breaks = 30)
 
 ```
 
-####The gapminder data frame range from 1952 to 2007
+###The gapminder data frame range from 1952 to 2007
 
 ```{r}
 range(gapminder$year)
 
 ```
 
-####Most age range of 70.8 to 76.7 years old. 
+### The most ages ranges from 70.8 to 76.7 years old. 
 ```{r}
 gapminder$lifeExpcat <- cut(gapminder$lifeExp,breaks = 10)
 table(gapminder$lifeExpcat)
@@ -128,8 +164,18 @@ summary(lifegdpmodel)$r.squared
 
 ```
 
+###Life expectancy of different continet
 
+```{r}
+ggplot(gapminder, aes(x = continent, y = lifeExp)) +
+  geom_boxplot(outlier.colour = "blue") +
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25)
+```
+###
 
+```{r}
+
+```
 
 
 
