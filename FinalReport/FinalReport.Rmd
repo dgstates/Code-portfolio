@@ -128,7 +128,7 @@ summary(lifegdpmodel)$r.squared
 
 ```
 
-2. Life expectancy of different continet
+2. What is life expectancy of different continet
 
 ```{r}
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
@@ -150,14 +150,14 @@ ggplot(GDPbyCont,
   theme_classic()
 ```
 
-4. What are top 5 countries with largest GDP per capita in 2007
+4. What are the top 5 countries with largest GDP per capita in 2007
 
 ```{r}
 top_n(arrange(gapminder2007, -gdpPercap), 5)
 
 ```
 
-5. What is life expectation over year by continent
+5. What is the life expectation over year by continent
 
 ```{r}
 ggplot(gapminder_unfiltered, 
@@ -176,7 +176,7 @@ ggplot(gapminder_unfiltered,
 
 7. Which countries have lower life expectancy
 8. Which countries have higher life expectancy
-9. What is income and life expactancy of Nepal compared to other Asian countries?
+9. What is gdp and life expactancy of Nepal compared to other Asian countries?
 
 ###Exploratory plots 20 pts:
 ####histogram, 
