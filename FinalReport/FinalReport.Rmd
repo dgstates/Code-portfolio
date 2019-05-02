@@ -142,7 +142,8 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
 ###Research Question 3:. What is the GDP distribution for different continents in 2007
 
 ```{r}
-GDPbyCont <- gapminder2007 %>% 
+GDPbyCont <- gapminder %>% 
+  filter(year==2007) %>% 
   group_by(continent) %>% 
   summarize(avgGDP = mean(gdpPercap))
 ggplot(GDPbyCont, 
@@ -157,7 +158,9 @@ ggplot(GDPbyCont,
 ###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007
 
 ```{r}
-top_n(arrange(gapminder2007, -gdpPercap), 5)
+gapminder %>% filter(year==2007) %>%
+  arrange(-gdpPercap) %>% 
+  top_n(5)
 #Table-2
 ```
 
@@ -165,10 +168,11 @@ top_n(arrange(gapminder2007, -gdpPercap), 5)
 ###Research Question 5: What are the top 5 countries with higher life expetancy in 2007
 
 ```{r}
-top_n(arrange(gapminder2007, -lifeExpcat), 5)
+gapminder %>% filter(year==2007) %>%
+  arrange(-lifeExp) %>% 
+  top_n(5)
 #Table-3
 ```
-
 
 
 ###Research Question 6: What is the life expectation over year by continent
@@ -202,7 +206,7 @@ lm(lifeExp ~ gdpPercap + year, data = gapminder)
 ggplot(gapminder, aes(gdpPercap, lifeExp)) + 
   geom_jitter() +
   geom_smooth(method = "lm")
-Figure-6
+#Figure-6
 ```
 ###Its a bad fit!
 
