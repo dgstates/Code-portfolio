@@ -122,6 +122,12 @@ abline(lifegdpmodel, col = "red")
 legend(x = "bottomright", lty = 1, col = "red", legend = "regression line")
 ```
 
+####
+```{r}
+summary(lifegdpmodel)$r.squared
+
+```
+
 
 
 
