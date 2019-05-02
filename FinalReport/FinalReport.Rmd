@@ -112,7 +112,7 @@ hist(gapminder$gdpPercaplog,breaks = 30)
 
 ##Explore data 60 pts - provide insights from data:
 ###Research questions:
-1. How does income relate to life expectancy?
+1. How does gdp relate to life expectancy for 2007?
 
 ```{r}
 plot(lifeExp~gdpPercaplog,data = gapminder, main = "Life Expectancy and GDP for 2007",
