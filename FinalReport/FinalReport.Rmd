@@ -169,6 +169,25 @@ ggplot(gapminder_unfiltered,
 
 
 
+```{r}
+lm(lifeExp ~ gdpPercap + year, data = gapminder)
+```
+
+###How does life expectancy relate to GDP over time 
+
+```{r}
+lm(lifeExp ~ gdpPercap + year, data = gapminder)
+```
+###Above coefficients shows that ife expectancy increases if the GDP or year increases. 
+###We can graph it to see if this model fits
+
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp)) + 
+  geom_jitter() +
+  geom_smooth(method = "lm")
+```
+###Its a bad fit!
+
 
 
 
