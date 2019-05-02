@@ -34,14 +34,14 @@ library(readr)
 gapdata<-read_csv("../Data/gapminder.csv")
 
 ```
-## Discrption of data:
-### The gapminder data frames include 1704 observations and six variables:
-1. country	
-2. continent	
-3. year	
-4. lifeExp	life expectancy at birth
-5. pop	total population
-6. gdpPercap	per-capita 
+## Discrption of data, data wrangling and data cleaning:
+- The gapminder data frames include 1704 observations and six variables:
+  1. country	
+  2. continent	
+  3. year	
+  4. lifeExp	life expectancy at birth
+  5. pop	total population
+  6. gdpPercap	per-capita 
 
 ### Number of observations:
 ```{r}
@@ -60,7 +60,7 @@ ncol(gapminder)
 summary(gapminder)
 ```
 
-#### There are not missing values
+### There are not missing values
 
 ```{r}
 sum(is.na(gapminder))
@@ -97,18 +97,18 @@ range(gapminder$year)
 ```{r}
 gapminder$lifeExpcat <- cut(gapminder$lifeExp,breaks = 10)
 table(gapminder$lifeExpcat)
+#Table-1
 ```
 
-#### ??
+### ??
 ```{r}
 gapminder$gdpPercaplog <- log(gapminder$gdpPercap)
 hist(gapminder$gdpPercaplog,breaks = 30)
+#figure-1
 ```
 
-###how disperse is your data (e.g price), range of variables (e.g. years) 2pts
-###data wrangling 2pts
+##data wrangling 2pts
 ###preprocessing steps (e.g. - normalization, log scale). If no preprocessing - explain why. Note: in gapminder population is calculated every ten years. Thus the same # population is applied to every year during the 10 year period. Consider wrangling your data before the analysis, do not treat these values as zero.
-
 
 ##Explore data 60 pts - provide insights from data:
 ###Research questions:
@@ -120,6 +120,7 @@ xlab = "Log of GDP", ylab = "Years")
 lifegdpmodel <- lm(lifeExp~gdpPercaplog,data = gapminder)
 abline(lifegdpmodel, col = "red")
 legend(x = "bottomright", lty = 1, col = "red", legend = "regression line")
+#Figure-2
 ```
 
 ####
@@ -133,8 +134,11 @@ summary(lifegdpmodel)$r.squared
 ```{r}
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
   geom_boxplot(outlier.colour = "blue") +
-  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25)
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25) 
+# Figure-3
 ```
+
+
 
 3. What is the GDP distribution for different continents in 2007
 
@@ -148,16 +152,27 @@ ggplot(GDPbyCont,
   ggtitle("2007 GDP by Continent") +
   xlab("Continent") + ylab("Avg. GDP per Capita") +
   theme_classic()
+#Figure-4
 ```
 
 4. What are the top 5 countries with largest GDP per capita in 2007
 
 ```{r}
 top_n(arrange(gapminder2007, -gdpPercap), 5)
-
+#Table-2
 ```
 
-5. What is the life expectation over year by continent
+
+5. What are the top 5 countries with higher life expetancy in 2007
+
+```{r}
+top_n(arrange(gapminder2007, -lifeExpcat), 5)
+#Table-3
+```
+
+
+
+6. What is the life expectation over year by continent
 
 ```{r}
 ggplot(gapminder_unfiltered, 
@@ -165,18 +180,21 @@ ggplot(gapminder_unfiltered,
   geom_smooth() + ggtitle("Life Expectation over Year by Continent") +
   xlab("Year") + ylab("Life Expectancy") +
   theme_classic()
+#Figure-5
 ```
 
 
 
 ```{r}
 lm(lifeExp ~ gdpPercap + year, data = gapminder)
+#Table-4
 ```
 
-###How does life expectancy relate to GDP over time 
+7. How does life expectancy relate to GDP over time 
 
 ```{r}
 lm(lifeExp ~ gdpPercap + year, data = gapminder)
+#Table-5
 ```
 ###Above coefficients shows that ife expectancy increases if the GDP or year increases. 
 ###We can graph it to see if this model fits
@@ -185,17 +203,12 @@ lm(lifeExp ~ gdpPercap + year, data = gapminder)
 ggplot(gapminder, aes(gdpPercap, lifeExp)) + 
   geom_jitter() +
   geom_smooth(method = "lm")
+Figure-6
 ```
 ###Its a bad fit!
 
 
 
-
-
-
-7. Which countries have lower life expectancy
-8. Which countries have higher life expectancy
-9. What is gdp and life expactancy of Nepal compared to other Asian countries?
 
 ###Exploratory plots 20 pts:
 ####histogram, 
