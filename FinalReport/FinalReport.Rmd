@@ -79,44 +79,8 @@ length(levels(gapminder$country))
 
 ```
 
-###GDP distribution for different continents in 2007
-
-```{r}
-GDPbyCont <- gapminder2007 %>% 
-  group_by(continent) %>% 
-  summarize(avgGDP = mean(gdpPercap))
-ggplot(GDPbyCont, 
-  aes(x = continent, y = avgGDP, color = continent)) +
-  geom_point(size=10) +
-  ggtitle("2007 GDP by Continent") +
-  xlab("Continent") + ylab("Avg. GDP per Capita") +
-  theme_classic()
-```
-
-###Top 5 countries with largest GDP per capita in 2007
-```{r}
-top_n(arrange(gapminder2007, -gdpPercap), 5)
-
-```
-
-###life expectation over year by continent
-```{r}
-ggplot(gapminder_unfiltered, 
-       aes(year, lifeExp, colour = continent)) + 
-  geom_smooth() + ggtitle("Life Expectation over Year by Continent") +
-  xlab("Year") + ylab("Life Expectancy") +
-  theme_classic()
-```
-
-
-
-
-
-
-
-
-
 ###Skewed to right 
+
 ```{r}
 hist(gapminder$gdpPercap,breaks = 30)
 
@@ -135,7 +99,7 @@ gapminder$lifeExpcat <- cut(gapminder$lifeExp,breaks = 10)
 table(gapminder$lifeExpcat)
 ```
 
-####
+#### ??
 ```{r}
 gapminder$gdpPercaplog <- log(gapminder$gdpPercap)
 hist(gapminder$gdpPercaplog,breaks = 30)
@@ -164,24 +128,55 @@ summary(lifegdpmodel)$r.squared
 
 ```
 
-###Life expectancy of different continet
+2. Life expectancy of different continet
 
 ```{r}
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
   geom_boxplot(outlier.colour = "blue") +
   geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25)
 ```
-###
+
+3. What is the GDP distribution for different continents in 2007
 
 ```{r}
+GDPbyCont <- gapminder2007 %>% 
+  group_by(continent) %>% 
+  summarize(avgGDP = mean(gdpPercap))
+ggplot(GDPbyCont, 
+  aes(x = continent, y = avgGDP, color = continent)) +
+  geom_point(size=10) +
+  ggtitle("2007 GDP by Continent") +
+  xlab("Continent") + ylab("Avg. GDP per Capita") +
+  theme_classic()
+```
 
+4. What are top 5 countries with largest GDP per capita in 2007
+
+```{r}
+top_n(arrange(gapminder2007, -gdpPercap), 5)
+
+```
+
+5. What is life expectation over year by continent
+
+```{r}
+ggplot(gapminder_unfiltered, 
+  aes(year, lifeExp, colour = continent)) + 
+  geom_smooth() + ggtitle("Life Expectation over Year by Continent") +
+  xlab("Year") + ylab("Life Expectancy") +
+  theme_classic()
 ```
 
 
 
-2. Which countries have lower life expectancy
-3. Which countries have higher life expectancy
-4. What is income and life expactancy of Nepal compared to other Asian countries?
+
+
+
+
+
+7. Which countries have lower life expectancy
+8. Which countries have higher life expectancy
+9. What is income and life expactancy of Nepal compared to other Asian countries?
 
 ###Exploratory plots 20 pts:
 ####histogram, 
