@@ -107,12 +107,11 @@ hist(gapminder$gdpPercaplog,breaks = 30)
 #figure-1
 ```
 
-##data wrangling 2pts
+##Dta wrangling 2pts
 ###preprocessing steps (e.g. - normalization, log scale). If no preprocessing - explain why. Note: in gapminder population is calculated every ten years. Thus the same # population is applied to every year during the 10 year period. Consider wrangling your data before the analysis, do not treat these values as zero.
 
 ##Explore data 60 pts - provide insights from data:
-###Research questions:
-1. How does gdp relate to life expectancy for 2007?
+###Research Question 1: How does gdp relate to life expectancy for 2007?
 
 ```{r}
 plot(lifeExp~gdpPercaplog,data = gapminder, main = "Life Expectancy and GDP for 2007",
@@ -129,7 +128,7 @@ summary(lifegdpmodel)$r.squared
 
 ```
 
-2. What is life expectancy of different continet
+###Research Question 2: What is life expectancy of different continet
 
 ```{r}
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
@@ -140,7 +139,7 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
 
 
 
-3. What is the GDP distribution for different continents in 2007
+###Research Question 3:. What is the GDP distribution for different continents in 2007
 
 ```{r}
 GDPbyCont <- gapminder2007 %>% 
@@ -155,7 +154,7 @@ ggplot(GDPbyCont,
 #Figure-4
 ```
 
-4. What are the top 5 countries with largest GDP per capita in 2007
+###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007
 
 ```{r}
 top_n(arrange(gapminder2007, -gdpPercap), 5)
@@ -163,7 +162,7 @@ top_n(arrange(gapminder2007, -gdpPercap), 5)
 ```
 
 
-5. What are the top 5 countries with higher life expetancy in 2007
+###Research Question 5: What are the top 5 countries with higher life expetancy in 2007
 
 ```{r}
 top_n(arrange(gapminder2007, -lifeExpcat), 5)
@@ -172,7 +171,7 @@ top_n(arrange(gapminder2007, -lifeExpcat), 5)
 
 
 
-6. What is the life expectation over year by continent
+###Research Question 6: What is the life expectation over year by continent
 
 ```{r}
 ggplot(gapminder_unfiltered, 
@@ -190,7 +189,7 @@ lm(lifeExp ~ gdpPercap + year, data = gapminder)
 #Table-4
 ```
 
-7. How does life expectancy relate to GDP over time 
+###Research Question 7: How does life expectancy relate to GDP over time 
 
 ```{r}
 lm(lifeExp ~ gdpPercap + year, data = gapminder)
@@ -206,6 +205,8 @@ ggplot(gapminder, aes(gdpPercap, lifeExp)) +
 Figure-6
 ```
 ###Its a bad fit!
+
+
 
 
 
@@ -237,7 +238,7 @@ Figure-6
 ###Axis values 1pt
 ###Plots are readable (for example, avoid colors that are hard to distinguished, it is a good practice to know if your colors are appropriate for color blindness) 1pt
 
-##Results 10 pts
+##Results and Conclusion: 10 pts
 ###Make sure to provide answers to questions you have generated at the beginning. Write a brief summary of your answers in your report. You are not expected to have a comprehensive research in this assignment.
 
 
