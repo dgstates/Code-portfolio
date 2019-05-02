@@ -87,20 +87,47 @@ hist(gapminder$gdpPercap,breaks = 30)
 range(gapminder$year)
 ```
 
-
 ###data wrangling 2pts
-###preprocessing steps (e.g. - normalization, log scale). If no preprocessing - explain why. Note: in gapminder population is calculated every ten years. Thus the same # population is applied to every year during the 10 year period. Consider wrangling your data before the analysis, do not treat these values as zero.
+####creating life expectancy categories
 
+```{r}
+gapminder$lifeExpcat <- cut(gapminder$lifeExp,breaks = 10)
+table(gapminder$lifeExpcat)
+```
+
+###preprocessing:
+### log transforming highly skewed variables
+
+```{r}
+gapminder$gdpPercaplog <- log(gapminder$gdpPercap)
+hist(gapminder$gdpPercaplog,breaks = 30)
+```
 
 ##Explore data 60 pts - provide insights from data:
 
 ###Research questions:
-1. How does income relate to life expectancy?
-
+1. How does GDP relate to life expectancy for 2007?
 
 ```{r}
-
+gapminder2007 <- subset(gapminder,year == 2007)
+cor(gapminder[,c("gdpPercap", "gdpPercaplog", "lifeExp")])
 ```
+
+####GDP explains life expectancy
+
+```{r}
+plot(lifeExp~gdpPercaplog,data = gapminder, main = "Life Expectancy and GDP for 2007", 
+     xlab = "Log of GDP", ylab = "Years")
+lifegdpmodel <- lm(lifeExp~gdpPercaplog,data = gapminder)
+abline(lifegdpmodel, col = "red")
+legend(x = "bottomright", lty = 1, col = "red", legend = "regression line")
+```
+####Calculation of R-Squared:
+
+```{r}
+summary(lifegdpmodel)$r.squared
+```
+####log of gdp explains 65 percent of variation in life expetancy. 
 
 2. Which countries have lower life expectancy
 
