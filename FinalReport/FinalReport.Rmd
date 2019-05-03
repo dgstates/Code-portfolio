@@ -25,6 +25,7 @@ library(lattice)
 library(ggplot2)
 library(purrr)
 library(tidyverse)
+library(cluster)
 
 ```
 ## Importing data as gapminder.csv file:   
@@ -222,22 +223,57 @@ ggplot(gapminder, aes(gdpPercap, lifeExp)) +
 ####box plot (your choice of meaningful plots)
 
 ###Cluster analysis 20 pts:
-
+## Research Question 6: What is grouping in data for 2007
 ```{r}
 kmeansdata <- subset(gapminder,year == 2007, select = c("lifeExp","gdpPercap","pop", "country", "continent"))
 summary(kmeansdata)
 kmeansdata_scaled <- scale(kmeansdata[,1:3])
-kmeansObj <- kmeans(kmeansdata_scaled, centers=3) #tell it you want 3 clusters
+
+```
+
+```{r}
+library(factoextra)
+fviz_nbclust(kmeansdata_scaled,kmeans,method = "wss")
+```
+
+
+```{r}
+kmeansObj <- kmeans(kmeansdata_scaled, centers=4) 
 kmeansObj
 
 ```
 
+```{r}
+clusplot(kmeansdata_scaled,kmeansObj$cluster)
+
+
+```
+
+```{r}
+kmeansdata$cluster <- kmeansObj$cluster
+```
 
 ####Specify explicitly the choice of # clusters using one of the learned methods (elbow, silhouette etc) 5 pts
 ####Visualize cluster 10 pts
 ####Summarize the observed pattern (if any) 5pts
 
 ###Regression analysis 20 pts
+#multiple regression 1
+```{r}
+mreg1 <- lm(lifeExp~year+gdpPercaplog,data = gapminder)
+summary(mreg1)
+```
+
+```{r}
+par(mfrow = c(2,2))
+plot(mreg1)
+
+
+```
+
+
+
+
 ####Specify the formula - what is your dependent variable=outcome (DV) and what are your independent variables/features (IV) 2 pts
 ####Provide the regression summary table 3 pts
 ####Explain the summary table 5 pts
