@@ -268,9 +268,17 @@ summary(mreg1)
 par(mfrow = c(2,2))
 plot(mreg1)
 
-
 ```
 
+```{r}
+ggplot(gapminder, aes(gdpPercap, lifeExp, color = year)) + 
+  geom_jitter()
+```
+
+
+```{r}
+cor.test(gapminder$lifeExp, gapminder$gdpPercap)
+```
 
 
 
