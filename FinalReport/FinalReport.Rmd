@@ -112,7 +112,7 @@ hist(gapminder$gdpPercaplog,breaks = 30)
 ```
 
 
-##Explore data 60 pts - provide insights from data:
+##Exploring data:
 ###Research Question 1: How does gdp relate to life expectancy for 2007?
 
 ```{r}
@@ -130,7 +130,7 @@ summary(lifegdpmodel)$r.squared
 
 ```
 
-###Research Question 2: What is life expectancy of different continet
+###Research Question 2: What is life expectancy of different continent?
 
 ```{r}
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
@@ -186,7 +186,7 @@ ggplot(gapminder_unfiltered,
   xlab("Year") + ylab("Life Expectancy") +
   theme_classic()
 #Figure-5
-```
+```dLife expectancy is a very important measure when we compare the health of different countries.
 
 
 
@@ -298,7 +298,9 @@ cor.test(gapminder$lifeExp, gapminder$gdpPercap)
 ###Axis values 1pt
 ###Plots are readable (for example, avoid colors that are hard to distinguished, it is a good practice to know if your colors are appropriate for color blindness) 1pt
 
-##Results and Conclusion: 10 pts
+##Results and Conclusion:
+Life expectancy is a very important measure when we compare the health of different countries.Figure-2 shows there are a strong corrlation between life expectancy and level of income(gdp)
+
 ###Make sure to provide answers to questions you have generated at the beginning. Write a brief summary of your answers in your report. You are not expected to have a comprehensive research in this assignment.
 
 
