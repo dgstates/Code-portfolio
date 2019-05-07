@@ -299,7 +299,7 @@ cor.test(gapminder$lifeExp, gapminder$gdpPercap)
 ###Plots are readable (for example, avoid colors that are hard to distinguished, it is a good practice to know if your colors are appropriate for color blindness) 1pt
 
 ##Results and Conclusion:
-Life expectancy is a very important measure when we compare the health of different countries.Figure-2 shows there are a strong corrlation between life expectancy and level of income(gdp)
+Life expectancy is a very important measure when we compare the health of different countries.Figure-2 shows there are a strong corrlation between life expectancy and level of income(log of gdp). 
 
 ###Make sure to provide answers to questions you have generated at the beginning. Write a brief summary of your answers in your report. You are not expected to have a comprehensive research in this assignment.
 
