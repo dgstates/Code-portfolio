@@ -83,8 +83,7 @@ length(levels(gapminder$country))
 ###Skewed to the left (strong right tail)
 
 ```{r}
-hist(gapminder$gdpPercap,breaks = 30)
-#Figure-1
+hist(gapminder$gdpPercap,breaks = 30,main = "Figure1:Histogram of GDP Per Capita", xlab = "GDP Per Capita (Dollars)")
 
 ```
 
@@ -101,15 +100,15 @@ range(gapminder$year)
 ```{r}
 gapminder$lifeExpcat <- cut(gapminder$lifeExp,breaks = 10)
 table(gapminder$lifeExpcat)
-#Table-1
+
 ```
 
 ###preprocessing: 
 ### Data transformation to normalize gdp
 ```{r}
 gapminder$gdpPercaplog <- log(gapminder$gdpPercap)
-hist(gapminder$gdpPercaplog,breaks = 30)
-#figure-2
+hist(gapminder$gdpPercaplog,breaks = 30,main = "Figure2:Histogram of log-transformed GDP Per Capita", xlab = "log of GDP Per Capita (Dollars)")
+
 ```
 
 
@@ -268,6 +267,7 @@ cor.test(gapminder$lifeExp, gapminder$gdpPercap)
 ###Plots are readable (for example, avoid colors that are hard to distinguished, it is a good practice to know if your colors are appropriate for color blindness) 1pt
 
 ##Results and Conclusion:
+Figure-1 shows most couries have lower GDP.Figure-2 demonstrats log transformation effectively normalizes the data. 
 ###Research Question 1: How does gdp relate to life expectancy for 2007?
 Life expectancy is a very important measure when we compare the health of different countries.Figure-2 shows there are a strong corrlation between life expectancy and level of income(log of gdp). 
 
