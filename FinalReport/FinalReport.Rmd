@@ -84,6 +84,7 @@ length(levels(gapminder$country))
 
 ```{r}
 hist(gapminder$gdpPercap,breaks = 30)
+#Figure-1
 
 ```
 
@@ -108,7 +109,7 @@ table(gapminder$lifeExpcat)
 ```{r}
 gapminder$gdpPercaplog <- log(gapminder$gdpPercap)
 hist(gapminder$gdpPercaplog,breaks = 30)
-#figure-1
+#figure-2
 ```
 
 
@@ -121,7 +122,7 @@ xlab = "Log of GDP", ylab = "Years")
 lifegdpmodel <- lm(lifeExp~gdpPercaplog,data = gapminder)
 abline(lifegdpmodel, col = "red")
 legend(x = "bottomright", lty = 1, col = "red", legend = "regression line")
-#Figure-2
+#Figure-3
 ```
 
 ####
@@ -136,7 +137,7 @@ summary(lifegdpmodel)$r.squared
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
   geom_boxplot(outlier.colour = "blue") +
   geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25) 
-# Figure-3
+# Figure-4
 ```
 
 
@@ -154,7 +155,7 @@ ggplot(GDPbyCont,
   ggtitle("2007 GDP by Continent") +
   xlab("Continent") + ylab("Avg. GDP per Capita") +
   theme_classic()
-#Figure-4
+#Figure-5
 ```
 
 ###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007?
@@ -163,7 +164,7 @@ ggplot(GDPbyCont,
 gapminder %>% filter(year==2007) %>%
   arrange(-gdpPercap) %>% 
   top_n(5)
-#Table-2
+#Table-1
 ```
 
 
@@ -173,47 +174,8 @@ gapminder %>% filter(year==2007) %>%
 gapminder %>% filter(year==2007) %>%
   arrange(-lifeExp) %>% 
   top_n(5)
-#Table-3
+#Table-2
 ```
-
-
-###Research Question 6: What is the life expectation over year by continent?
-
-```{r}
-ggplot(gapminder_unfiltered, 
-  aes(year, lifeExp, colour = continent)) + 
-  geom_smooth() + ggtitle("Life Expectation over Year by Continent") +
-  xlab("Year") + ylab("Life Expectancy") +
-  theme_classic()
-#Figure-5
-```dLife expectancy is a very important measure when we compare the health of different countries.
-
-
-
-```{r}
-lm(lifeExp ~ gdpPercap + year, data = gapminder)
-#Table-4
-```
-
-###Research Question 7: How does life expectancy relate to GDP over time?
-
-```{r}
-lm(lifeExp ~ gdpPercap + year, data = gapminder)
-#Table-5
-```
-###Above coefficients shows that ife expectancy increases if the GDP or year increases. 
-###We can graph it to see if this model fits
-
-```{r}
-ggplot(gapminder, aes(gdpPercap, lifeExp)) + 
-  geom_jitter() +
-  geom_smooth(method = "lm")
-#Figure-6
-```
-###Its a bad fit!
-
-
-
 
 
 
@@ -223,28 +185,32 @@ ggplot(gapminder, aes(gdpPercap, lifeExp)) +
 ####box plot (your choice of meaningful plots)
 
 ###Cluster analysis:
-## Research Question 8: What is grouping in data for 2007?
+## Research Question 6: What is grouping in data for 2007?
 ```{r}
 kmeansdata <- subset(gapminder,year == 2007, select = c("lifeExp","gdpPercap","pop", "country", "continent"))
 summary(kmeansdata)
 kmeansdata_scaled <- scale(kmeansdata[,1:3])
+#Table-3
 
 ```
 
 ```{r}
 library(factoextra)
 fviz_nbclust(kmeansdata_scaled,kmeans,method = "wss")
+Figgure-6
 ```
 
 
 ```{r}
 kmeansObj <- kmeans(kmeansdata_scaled, centers=4) 
 kmeansObj
+#Table-4
 
 ```
 
 ```{r}
 clusplot(kmeansdata_scaled,kmeansObj$cluster)
+#Figure-7
 
 
 ```
@@ -262,22 +228,25 @@ kmeansdata$cluster <- kmeansObj$cluster
 ```{r}
 mreg1 <- lm(lifeExp~year+gdpPercaplog,data = gapminder)
 summary(mreg1)
+#Table-5
 ```
 
 ```{r}
 par(mfrow = c(2,2))
 plot(mreg1)
-
+Figure-8
 ```
 
 ```{r}
 ggplot(gapminder, aes(gdpPercap, lifeExp, color = year)) + 
   geom_jitter()
+#Figure-9
 ```
 
 
 ```{r}
 cor.test(gapminder$lifeExp, gapminder$gdpPercap)
+#Table-6
 ```
 
 
@@ -301,13 +270,12 @@ cor.test(gapminder$lifeExp, gapminder$gdpPercap)
 ##Results and Conclusion:
 ###Research Question 1: How does gdp relate to life expectancy for 2007?
 Life expectancy is a very important measure when we compare the health of different countries.Figure-2 shows there are a strong corrlation between life expectancy and level of income(log of gdp). 
+
 ###Research Question 2: What is life expectancy of different continent?
 ###Research Question 3:. What is the GDP distribution for different continents in 2007?
 ###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007?
 ###Research Question 5: What are the top 5 countries with higher life expetancy in 2007?
-###Research Question 6: What is the life expectation over year by continent?
-###Research Question 7: How does life expectancy relate to GDP over time?
-###Research Question 8: What is grouping in data for 2007?
+###Research Question 6: What is grouping in data for 2007?
 
 
 ###Make sure to provide answers to questions you have generated at the beginning. Write a brief summary of your answers in your report. You are not expected to have a comprehensive research in this assignment.
