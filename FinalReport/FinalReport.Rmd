@@ -116,12 +116,12 @@ hist(gapminder$gdpPercaplog,breaks = 30,main = "Figure2:Histogram of log-transfo
 ###Research Question 1: How does gdp relate to life expectancy for 2007?
 
 ```{r}
-plot(lifeExp~gdpPercaplog,data = gapminder, main = "Life Expectancy and GDP for 2007",
+plot(lifeExp~gdpPercaplog,data = gapminder, main = "Figure-3: Life Expectancy and GDP for 2007",
 xlab = "Log of GDP", ylab = "Years")
 lifegdpmodel <- lm(lifeExp~gdpPercaplog,data = gapminder)
 abline(lifegdpmodel, col = "red")
 legend(x = "bottomright", lty = 1, col = "red", legend = "regression line")
-#Figure-3
+
 ```
 
 ####
@@ -135,8 +135,10 @@ summary(lifegdpmodel)$r.squared
 ```{r}
 ggplot(gapminder, aes(x = continent, y = lifeExp)) +
   geom_boxplot(outlier.colour = "blue") +
-  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25) 
-# Figure-4
+  geom_jitter(position = position_jitter(width = 0.1, height = 0), alpha = 0.25) +
+  ggtitle("Figure-4:Life expectancy by continent") +
+  theme(plot.title = element_text(hjust = 0.5))
+ 
 ```
 
 
@@ -151,29 +153,30 @@ GDPbyCont <- gapminder %>%
 ggplot(GDPbyCont, 
   aes(x = continent, y = avgGDP, color = continent)) +
   geom_point(size=10) +
-  ggtitle("2007 GDP by Continent") +
+  ggtitle("Figure-5:2007 GDP by Continent") +
   xlab("Continent") + ylab("Avg. GDP per Capita") +
-  theme_classic()
-#Figure-5
+  theme_classic() +
+  theme(plot.title = element_text(hjust = 0.5))
+
 ```
 
 ###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007?
-
+####Table-1
 ```{r}
 gapminder %>% filter(year==2007) %>%
   arrange(-gdpPercap) %>% 
   top_n(5)
-#Table-1
+
 ```
 
 
 ###Research Question 5: What are the top 5 countries with higher life expetancy in 2007?
-
+####Table-2
 ```{r}
 gapminder %>% filter(year==2007) %>%
   arrange(-lifeExp) %>% 
   top_n(5)
-#Table-2
+
 ```
 
 
@@ -250,31 +253,24 @@ cor.test(gapminder$lifeExp, gapminder$gdpPercap)
 
 
 
-####Specify the formula - what is your dependent variable=outcome (DV) and what are your independent variables/features (IV) 2 pts
-####Provide the regression summary table 3 pts
-####Explain the summary table 5 pts
-####Visualize 4 diagnostic plots 5 pts
-####Explain how well your model fit the assumptions based on those diagnostic plots 5 pts
-####Note: Provide a full explanation/description for each figure. 
-####Subtracting 1pt for not providing explanation for a figure
-####Subtracting 1pt: for printing data tables. Do not include head functions, do not print a portion of dataframe - it is only needed for your exploration but not for report. Consider simply providing a descriptive information
-
-##Visualization 5 pts (overall)
-###Legends 1pt
-###Title 1pt
-###Axis titles 1pt
-###Axis values 1pt
-###Plots are readable (for example, avoid colors that are hard to distinguished, it is a good practice to know if your colors are appropriate for color blindness) 1pt
-
 ##Results and Conclusion:
 Figure-1 shows most couries have lower GDP.Figure-2 demonstrats log transformation effectively normalizes the data. 
+
 ###Research Question 1: How does gdp relate to life expectancy for 2007?
-Life expectancy is a very important measure when we compare the health of different countries.Figure-2 shows there are a strong corrlation between life expectancy and level of income(log of gdp). 
+Life expectancy is a very important measure when we compare the health of different countries.Figure-3 shows there are a strong positive corrlation between life expectancy and level of income(log of gdp) in 2007. 
 
 ###Research Question 2: What is life expectancy of different continent?
+Figure-4 provides a boxplot of life expectancy of different continent. The figure shows Africa has th lowest life expectancy and Oceania and Europe have the highest life expectancy. 
+
 ###Research Question 3:. What is the GDP distribution for different continents in 2007?
+Figure-5 shows the average GDP distribution for different conitnents in 2007. The figure demonstrates Africa has the lowest GDP and Occean and Europ have the highest GDP Per Capita in 2007. 
+
 ###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007?
+Norway, Kuwait, Singapore, United States, and Ireland are the top 5 countries with largest GDP per capita in 2007.
+
 ###Research Question 5: What are the top 5 countries with higher life expetancy in 2007?
+Norway, Singapore,Ireland, United States, and Kuwait are he top 5 countries with higher life expectancy in 2007.
+
 ###Research Question 6: What is grouping in data for 2007?
 
 
