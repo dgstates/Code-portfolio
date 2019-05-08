@@ -141,7 +141,7 @@ ggplot(gapminder, aes(x = continent, y = lifeExp)) +
 
 
 
-###Research Question 3:. What is the GDP distribution for different continents in 2007
+###Research Question 3:. What is the GDP distribution for different continents in 2007?
 
 ```{r}
 GDPbyCont <- gapminder %>% 
@@ -157,7 +157,7 @@ ggplot(GDPbyCont,
 #Figure-4
 ```
 
-###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007
+###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007?
 
 ```{r}
 gapminder %>% filter(year==2007) %>%
@@ -167,7 +167,7 @@ gapminder %>% filter(year==2007) %>%
 ```
 
 
-###Research Question 5: What are the top 5 countries with higher life expetancy in 2007
+###Research Question 5: What are the top 5 countries with higher life expetancy in 2007?
 
 ```{r}
 gapminder %>% filter(year==2007) %>%
@@ -177,7 +177,7 @@ gapminder %>% filter(year==2007) %>%
 ```
 
 
-###Research Question 6: What is the life expectation over year by continent
+###Research Question 6: What is the life expectation over year by continent?
 
 ```{r}
 ggplot(gapminder_unfiltered, 
@@ -195,7 +195,7 @@ lm(lifeExp ~ gdpPercap + year, data = gapminder)
 #Table-4
 ```
 
-###Research Question 7: How does life expectancy relate to GDP over time 
+###Research Question 7: How does life expectancy relate to GDP over time?
 
 ```{r}
 lm(lifeExp ~ gdpPercap + year, data = gapminder)
@@ -217,13 +217,13 @@ ggplot(gapminder, aes(gdpPercap, lifeExp)) +
 
 
 
-###Exploratory plots 20 pts:
+###Exploratory plots:
 ####histogram, 
 ####correlation plot, 
 ####box plot (your choice of meaningful plots)
 
-###Cluster analysis 20 pts:
-## Research Question 6: What is grouping in data for 2007
+###Cluster analysis:
+## Research Question 8: What is grouping in data for 2007?
 ```{r}
 kmeansdata <- subset(gapminder,year == 2007, select = c("lifeExp","gdpPercap","pop", "country", "continent"))
 summary(kmeansdata)
@@ -299,7 +299,16 @@ cor.test(gapminder$lifeExp, gapminder$gdpPercap)
 ###Plots are readable (for example, avoid colors that are hard to distinguished, it is a good practice to know if your colors are appropriate for color blindness) 1pt
 
 ##Results and Conclusion:
+###Research Question 1: How does gdp relate to life expectancy for 2007?
 Life expectancy is a very important measure when we compare the health of different countries.Figure-2 shows there are a strong corrlation between life expectancy and level of income(log of gdp). 
+###Research Question 2: What is life expectancy of different continent?
+###Research Question 3:. What is the GDP distribution for different continents in 2007?
+###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007?
+###Research Question 5: What are the top 5 countries with higher life expetancy in 2007?
+###Research Question 6: What is the life expectation over year by continent?
+###Research Question 7: How does life expectancy relate to GDP over time?
+###Research Question 8: What is grouping in data for 2007?
+
 
 ###Make sure to provide answers to questions you have generated at the beginning. Write a brief summary of your answers in your report. You are not expected to have a comprehensive research in this assignment.
 
