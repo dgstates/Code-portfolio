@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Introduction
-Study shows there are many factora influence life expectancy such as socioeconomic status, income, education, access to healthcare, health behaviours, poor nutrition and lack of exercise etc. In this study,there are three following research questions to be answered by using gapminder data. 
+Study shows there are many factora influence life expectancy such as socioeconomic status, income, education, access to healthcare, health behavior, poor nutrition and lack of exercise etc. In this study,there are six research questions to be answered by using gapminder data. 
 
 ### Importing data and libraries:
 
@@ -273,7 +273,7 @@ Norway, Singapore,Ireland, United States, and Kuwait are he top 5 countries with
 Figure-6 shows 4 different cluster of kmeansdata. 
 Figure-6 shows China(#4) and India (#4) are strongly separated from other grouping. 
 
-###Make sure to provide answers to questions you have generated at the beginning. Write a brief summary of your answers in your report. You are not expected to have a comprehensive research in this assignment.
+
 
 
 
