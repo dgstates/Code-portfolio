@@ -15,7 +15,7 @@ Study shows there are many factora influence life expectancy such as socioeconom
 
 ### Importing data and libraries:
 
-```{r}
+```{r message=FALSE}
 library(gapminder)
 library(plyr)
 library(dplyr)
@@ -36,6 +36,7 @@ gapdata<-read_csv("../Data/gapminder.csv")
 
 ```
 ## Discrption of data, data wrangling and data cleaning:
+###Variables
   1. country	
   2. continent	
   3. year	
@@ -105,7 +106,7 @@ table(gapminder$lifeExpcat)
 
 ```
 
-###preprocessing: 
+###Preprocessing: 
 ### Data transformation to normalize gdp
 ```{r}
 gapminder$gdpPercaplog <- log(gapminder$gdpPercap)
@@ -184,14 +185,16 @@ gapminder %>% filter(year==2007) %>%
 
 ###Cluster analysis:
 ## Research Question 6: What is grouping in data for 2007?
+###processing the data
 
 ```{r}
 kmeansdata <- subset(gapminder,year == 2007, select = c("lifeExp","gdpPercap","pop", "country", "continent"))
 summary(kmeansdata)
 kmeansdata_scaled <- scale(kmeansdata[,1:3])
-#Table-3
+
 
 ```
+###Finding the best number of clusters
 
 ```{r}
 library(factoextra)
@@ -199,6 +202,7 @@ fviz_nbclust(kmeansdata_scaled,kmeans,method = "wss")
 
 ```
 
+###Building the model and exploring an output
 
 ```{r}
 set.seed(1)
@@ -209,49 +213,31 @@ table(kmeansObj$cluster)
 ```
 ```{r}
 print.data.frame(kmeansdata[,c("cluster", "country", "continent")])
+
 ```
 
+###Visualizing the clusters
 
 ```{r}
 clusplot(kmeansdata_scaled,kmeansObj$cluster, main = "Figure-6: clusterplot of Kmeansdata(Scaled)", labels = 4, color = 1)
 
 ```
 
-```{r}
-kmeansdata$cluster <- kmeansObj$cluster
-```
+###Research Question 7: What is life expectancy relation to all years and gdp?
 
-####Specify explicitly the choice of # clusters using one of the learned methods (elbow, silhouette etc) 5 pts
-####Visualize cluster 10 pts
-####Summarize the observed pattern (if any) 5pts
+###Multiple regression of all the data
 
-###Regression analysis 20 pts
-#multiple regression 1
 ```{r}
 mreg1 <- lm(lifeExp~year+gdpPercaplog,data = gapminder)
 summary(mreg1)
-#Table-5
-```
 
+```
+### Checking models assumptions
 ```{r}
 par(mfrow = c(2,2))
 plot(mreg1)
 
 ```
-
-```{r}
-ggplot(gapminder, aes(gdpPercap, lifeExp, color = year)) + 
-  geom_jitter()
-#Figure-9
-```
-
-
-```{r}
-cor.test(gapminder$lifeExp, gapminder$gdpPercap)
-#Table-6
-```
-
-
 
 ##Results and Conclusion:
 Figure-1 shows most couries have lower GDP.Figure-2 demonstrats log transformation effectively normalizes the data. 
@@ -274,7 +260,8 @@ Table-2 provides Norway, Singapore,Ireland, United States, and Kuwait are he top
 ###Research Question 6: What is grouping in data for 2007?
 Figure-6 shows 4 different cluster of kmeansdata. In addition, figure-6 shows China(#4) and India (#4) are strongly separated from other grouping. 
 
-
+###Research Question 7: What is life expectancy relation to all years and gdp?
+Regression analysis shows that life expectancy was significantly positively related to both year and gdp. The model fits was strong within R square of 0.72. Residual dignostics showed there are some problems with model assumptions.
 
 
 
