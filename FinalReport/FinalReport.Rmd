@@ -36,7 +36,6 @@ gapdata<-read_csv("../Data/gapminder.csv")
 
 ```
 ## Discrption of data, data wrangling and data cleaning:
-- The gapminder data frames include 1704 observations and six variables:
   1. country	
   2. continent	
   3. year	
@@ -47,18 +46,21 @@ gapdata<-read_csv("../Data/gapminder.csv")
 ### Number of observations:
 ```{r}
 nrow(gapminder)
+
 ```
 
 ### Number of variables
 
 ```{r}
 ncol(gapminder)
+
 ```
 
 ### Basic summary of statistics are shown below:
 
 ```{r}
 summary(gapminder)
+
 ```
 
 ### There are not missing values
@@ -264,14 +266,13 @@ Figure-4 provides a boxplot of life expectancy of different continent. The figur
 Figure-5 shows the average GDP distribution for different conitnents in 2007. The figure demonstrates Africa has the lowest GDP and Occean and Europ have the highest GDP Per Capita in 2007. 
 
 ###Research Question 4: What are the top 5 countries with largest GDP per capita in 2007?
-Norway, Kuwait, Singapore, United States, and Ireland are the top 5 countries with largest GDP per capita in 2007.
+Table-1 shows Norway, Kuwait, Singapore, United States, and Ireland are the top 5 countries with largest GDP per capita in 2007.
 
 ###Research Question 5: What are the top 5 countries with higher life expetancy in 2007?
-Norway, Singapore,Ireland, United States, and Kuwait are he top 5 countries with higher life expectancy in 2007.
+Table-2 provides Norway, Singapore,Ireland, United States, and Kuwait are he top 5 countries with higher life expectancy in 2007.
 
 ###Research Question 6: What is grouping in data for 2007?
-Figure-6 shows 4 different cluster of kmeansdata. 
-Figure-6 shows China(#4) and India (#4) are strongly separated from other grouping. 
+Figure-6 shows 4 different cluster of kmeansdata. In addition, figure-6 shows China(#4) and India (#4) are strongly separated from other grouping. 
 
 
 
